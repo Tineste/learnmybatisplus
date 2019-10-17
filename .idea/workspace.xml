@@ -1,21 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6705e925-feee-4b5f-a945-6a1e1c327e5a" name="Default Changelist" comment="" />
+    <list default="true" id="6705e925-feee-4b5f-a945-6a1e1c327e5a" name="Default Changelist" comment="提交下">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/orz/xuchao/learnmybatisplus/MyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/orz/xuchao/learnmybatisplus/MyTest.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="WARN_ABOUT_DETACHED_HEAD" value="false" />
   </component>
   <component name="ProjectId" id="1RxQAZFoy7pUZNlHnF5derkNOwI" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$/src/main/java/orz/xuchao/learnmybatisplus/mapper" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="orz.xuchao.learnmybatisplus.dao" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/mapper" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -29,6 +60,97 @@
       </list>
     </option>
   </component>
+  <component name="RunManager" selected="JUnit.ServiceTest.selectById">
+    <configuration name="DeleteTest.selectLogic" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="learnmybatisplus" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="orz.xuchao.learnmybatisplus.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="orz.xuchao.learnmybatisplus" />
+      <option name="MAIN_CLASS_NAME" value="orz.xuchao.learnmybatisplus.DeleteTest" />
+      <option name="METHOD_NAME" value="selectLogic" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServiceTest.batch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="learnmybatisplus" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="orz.xuchao.learnmybatisplus.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="orz.xuchao.learnmybatisplus" />
+      <option name="MAIN_CLASS_NAME" value="orz.xuchao.learnmybatisplus.ServiceTest" />
+      <option name="METHOD_NAME" value="batch" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServiceTest.doit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="learnmybatisplus" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="orz.xuchao.learnmybatisplus.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="orz.xuchao.learnmybatisplus" />
+      <option name="MAIN_CLASS_NAME" value="orz.xuchao.learnmybatisplus.ServiceTest" />
+      <option name="METHOD_NAME" value="doit" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServiceTest.selectById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="learnmybatisplus" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="orz.xuchao.learnmybatisplus.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="orz.xuchao.learnmybatisplus" />
+      <option name="MAIN_CLASS_NAME" value="orz.xuchao.learnmybatisplus.ServiceTest" />
+      <option name="METHOD_NAME" value="selectById" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServiceTest.testLock" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="learnmybatisplus" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="orz.xuchao.learnmybatisplus.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="orz.xuchao.learnmybatisplus" />
+      <option name="MAIN_CLASS_NAME" value="orz.xuchao.learnmybatisplus.ServiceTest" />
+      <option name="METHOD_NAME" value="testLock" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ServiceTest.selectById" />
+        <item itemvalue="JUnit.ServiceTest.testLock" />
+        <item itemvalue="JUnit.ServiceTest.batch" />
+        <item itemvalue="JUnit.ServiceTest.doit" />
+        <item itemvalue="JUnit.DeleteTest.selectLogic" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -40,6 +162,49 @@
       <option name="presentableId" value="Default" />
       <updated>1570606124975</updated>
     </task>
+    <task id="LOCAL-00001" summary="提交下">
+      <created>1570608778177</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1570608778177</updated>
+    </task>
+    <task id="LOCAL-00002" summary="提交下">
+      <created>1570697915725</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1570697915725</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="提交下" />
+    <option name="LAST_COMMIT_MESSAGE" value="提交下" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/orz/xuchao/learnmybatisplus/configuration/MyMetaObjectHandler.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

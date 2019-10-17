@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: learnmybatispuls
+#    数据库
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://127.0.0.1:3306/mytest?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&verifyServerCertificate=false
+    username: root
+    password: 123456
+    #hikari\u6570\u636E\u5E93\u8FDE\u63A5\u6C60
+    hikari:
+      pool-name: MyHikariCP
+      minimum-idle: 5 #\u6700\u5C0F\u7A7A\u95F2\u8FDE\u63A5\u6570\u91CF
+      idle-timeout: 180000 #\u7A7A\u95F2\u8FDE\u63A5\u5B58\u6D3B\u6700\u5927\u65F6\u95F4\uFF0C\u9ED8\u8BA4600000\uFF0810\u5206\u949F\uFF09
+      maximum-pool-size: 10 #\u8FDE\u63A5\u6C60\u6700\u5927\u8FDE\u63A5\u6570\uFF0C\u9ED8\u8BA4\u662F10
+      auto-commit: true  #\u6B64\u5C5E\u6027\u63A7\u5236\u4ECE\u6C60\u8FD4\u56DE\u7684\u8FDE\u63A5\u7684\u9ED8\u8BA4\u81EA\u52A8\u63D0\u4EA4\u884C\u4E3A,\u9ED8\u8BA4\u503C\uFF1Atrue
+      max-lifetime: 1800000 #\u6B64\u5C5E\u6027\u63A7\u5236\u6C60\u4E2D\u8FDE\u63A5\u7684\u6700\u957F\u751F\u547D\u5468\u671F\uFF0C\u503C0\u8868\u793A\u65E0\u9650\u751F\u547D\u5468\u671F\uFF0C\u9ED8\u8BA41800000\u537330\u5206\u949F
+      connection-timeout: 30000 #\u6570\u636E\u5E93\u8FDE\u63A5\u8D85\u65F6\u65F6\u95F4,\u9ED8\u8BA430\u79D2\uFF0C\u537330000
+      connection-test-query: SELECT 1
+server:
+  port: 8089
+
+#mybatis-plus:
+#  mapper-locations: classpath:orz/xuchao/learnmybatisplus/mapper/*
+mybatis-plus:
+  mapper-locations:
+  - /mapper/*.xml
+#  设置全局的id模式（雪花算法，uuid等），局部要是配了局部优先
+  global-config:
+    id-type: uuid
+#  原来mapper.xml返回对象之类的需要设置类路径，这里配置之后包名就不需要加了
+  type-aliases-package: orz.xuchao.learnmybatisplus.entity
+#  配置逻辑删除的
+  db-config:
+    logic-not-delete-value: 0
+    logic-delete-value: 1
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+

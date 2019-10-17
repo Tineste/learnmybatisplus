@@ -1,16 +1,20 @@
 package orz.xuchao.learnmybatisplus;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.additional.query.impl.LambdaQueryChainWrapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import orz.xuchao.learnmybatisplus.dao.UserMapper;
+import orz.xuchao.learnmybatisplus.dao.UserDao;
 import orz.xuchao.learnmybatisplus.entity.User;
 
-import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -22,51 +26,52 @@ import java.util.Map;
 public class MyTest {
 
     @Autowired
-    private UserMapper userMapper;
-
+    private UserDao userMapper;
     @Test
-    public void select(){
-        List<User> list=userMapper.selectList(null);
+    public void select() {
+        List<User> list = userMapper.selectList(null);
         list.forEach(System.out::println);
-        System.out.println("===>"+list.get(0).getName());
+        System.out.println("===>" + list.get(0).getName());
 
     }
 
 
     @Test
-    public void insert(){
-        User user=new User();
+    public void insert() {
+        User user = new User();
         user.setName("朱六");
         user.setAge(10);
         user.setManagerId((long) 2);
         user.setCreateTime(LocalDateTime.now());
-        int rows=userMapper.insert(user);
+        int rows = userMapper.insert(user);
         System.out.println(rows);
     }
+
     @Test
-    public void selectById(){
-        User user=userMapper.selectById("1182090169351630850");
-        System.out.println("===>"+user.toString());
+    public void selectById() {
+        User user = userMapper.selectById("1182090169351630850");
+        System.out.println("===>" + user.toString());
     }
 
     @Test
-    public void selectByIds(){
-        List<Long> idsList= Arrays.asList(1182090169351630850L,1182105164730793985L);
-        List<User> userList=userMapper.selectBatchIds(idsList);
+    public void selectByIds() {
+        List<Long> idsList = Arrays.asList(1182090169351630850L, 1182105164730793985L);
+        List<User> userList = userMapper.selectBatchIds(idsList);
         userList.forEach(System.out::println);
     }
+
     @Test
-    public void selectByMap(){
-        Map<String,Object> columnMap=new HashMap<>();
+    public void selectByMap() {
+        Map<String, Object> columnMap = new HashMap<>();
 //        columnMap.put("name","李雷");
-        columnMap.put("age","10");
-        List<User> userList=userMapper.selectByMap(columnMap);
+        columnMap.put("age", "10");
+        List<User> userList = userMapper.selectByMap(columnMap);
         userList.forEach(System.out::println);
     }
 
     @Test
-    public void selectByWrapper(){
-        QueryWrapper<User> queryWrapper=new QueryWrapper<>();
+    public void selectByWrapper() {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
 //        姓名包含小，年龄20以下  name like "%小%" and age<20
 //        queryWrapper.like("name","小").lt("age",20);
 
@@ -125,16 +130,99 @@ public class MyTest {
 //        queryWrapper.select("id","name").like("name","小").lt("age",20);
 
 
-
-        List<User> userList=userMapper.selectList(queryWrapper);
+        List<User> userList = userMapper.selectList(queryWrapper);
         userList.forEach(System.out::println);
 
     }
-    private void condition(String name,String email){
-        QueryWrapper<User> queryWrapper=new QueryWrapper<>();
-        queryWrapper.like(StringUtils.isNotEmpty(name),"name",name)
-                .like(StringUtils.isNotEmpty(email),"email",email);
+
+    public void condition(String name, String email) {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.like(StringUtils.isNotEmpty(name), "name", name)
+                .like(StringUtils.isNotEmpty(email), "email", email);
 
     }
+
+    @Test
+    public void seletOutAsMap() {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<User>();
+        queryWrapper.select("id", "name").like("name", "小明").lt("age", 10);
+        List<Map<String, Object>> userList = userMapper.selectMaps(queryWrapper);
+        userList.forEach(System.out::println);
+    }
+
+    @Test
+    public void selectLambda() {
+//        三种构造方法都行
+//        LambdaQueryWrapper<User> lambda=new QueryWrapper<User>().lambda();
+//        LambdaQueryWrapper<User> lambdaQueryWrapper=new LambdaQueryWrapper<User>();
+        LambdaQueryWrapper<User> lambdaQuery = Wrappers.<User>lambdaQuery();
+//        防止误写，name写成mame之类的
+//        lambdaQuery.like(User::getName,"雨").lt(User::getAge,40);
+
+//        lambdaQuery.likeRight(User::getName,"王").and(lqw->lqw.lt(User::getAge,40).or().isNotNull(User::getEmail));
+
+
+        List<User> userList = userMapper.selectList(lambdaQuery);
+        userList.forEach(System.out::println);
+    }
+
+    @Test
+    public void selectLambda2() {
+
+        List<User> userList = new LambdaQueryChainWrapper<User>(userMapper)
+                .like(User::getName, "雨").ge(User::getAge, 20).list();
+        userList.forEach(System.out::println);
+    }
+
+    @Test
+    public void selectMy(){
+        LambdaQueryWrapper<User> lambdaQuery=Wrappers.<User>lambdaQuery();
+        lambdaQuery.likeRight(User::getName,"小")
+                .and(lqw->lqw.lt(User::getAge,40).or().isNotNull(User::getEmail));
+        List<User> userList=userMapper.selectAll(lambdaQuery);
+        userList.forEach(System.out::println);
+
+    }
+
+    @Test
+    public void selectByPages(){
+        QueryWrapper<User> queryWrapper=new QueryWrapper<User>();
+        queryWrapper.ge("age",5);
+
+//        不需要记录数的时候
+//        Page<User> page=new Page<User>(1,2,false);
+
+        Page<User> page=new Page<User>(1,2);
+
+//        IPage<User> iPage=userMapper.selectPage(page,queryWrapper);
+
+
+        IPage<Map<String,Object>> iPage=userMapper.selectMapsPage(page,queryWrapper);
+        System.out.println("总页数"+iPage.getPages());
+        System.out.println("总记录数"+iPage.getTotal());
+//        List<User> userList=iPage.getRecords();
+
+        List<Map<String,Object>> userList=iPage.getRecords();
+        userList.forEach(System.out::println);
+
+
+    }
+
+    @Test
+    public void selectByPages2(){
+        QueryWrapper<User> queryWrapper=new QueryWrapper<User>();
+        queryWrapper.ge("age",5);
+//        不需要记录数的时候
+        Page<User> page=new Page<User>(1,2,false);
+//        Page<User> page=new Page<User>(1,2);
+        IPage<User> iPage=userMapper.selectAll2(page,queryWrapper);
+        System.out.println("总页数"+iPage.getPages());
+        System.out.println("总记录数"+iPage.getTotal());
+        List<User> userList=iPage.getRecords();
+        userList.forEach(System.out::println);
+
+
+    }
+
 
 }
